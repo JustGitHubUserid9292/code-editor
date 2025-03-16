@@ -5,6 +5,7 @@ body {
   margin: 0;
   height: 100vh;
   font-family: 'Inter', 'sans-serif';
+  overflow: hidden;
 }
 
 .header {
@@ -30,8 +31,19 @@ body {
   cursor: pointer; 
 }
 
+.run-code.loading {
+  color: #9b9b9b;
+  padding: 10px 35px;
+  font-size: 16px;
+  background-color: #3d3d3d;
+}
+
 .run-code:hover {
   background-color: #0a7a0a;
+}
+
+.run-code.loading:hover {
+  background-color: #505050;
 }
 
 .editor-config {
@@ -53,6 +65,45 @@ body {
   border-radius: 5px;
 }
 
+.editor-switcher {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.editor-switcher i {
+  font-size: 24px;
+  color: #ddd;
+  cursor: pointer;
+}
+
+.editor-switcher i:hover {
+  color: #9b9b9b;
+}
+
+.editor-switcher-button {
+  background: #333;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  top: 2px;
+  left: -50px; 
+}
+
+
+.theme-title {
+  color: white;
+}
+
 
 .lngLogo {
   width: 25px;
@@ -61,6 +112,54 @@ body {
 
 .language-menu {
   display: none;
+}
+
+.editor-menu {
+  display: none;
+}
+
+.language-menu.show, .editor-menu.show {
+  display: flex;
+  position: fixed;
+  right: 50px; 
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  z-index: 9999;
+  width: 200px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.editor-menu.show {
+  right: 225px;
+}
+
+.menu-item {
+  padding: 10px;
+  cursor: pointer;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+  border-radius: 4px;
+}
+
+.menu-item .version {
+  font-size: 0.8em;
+  color: #888;
+  margin-left: 8px;
+}
+
+.menu-item:hover {
+  background: #9b9b9b;
+  color: #fff;
+  transform: translateX(5px);
+}
+
+.menu-item:hover .version {
+  color: #333;
 }
 
 .spinner {
@@ -107,13 +206,16 @@ body {
 }
 
 .output {
+    display: block;
+    white-space: pre-line;
     position: relative;
     color: white;
+    opacity: 0.9;
     width: 40%;
 }
 
 .output.error {
-  color: red
+  color: red;
 }
 
 .output-extra {
@@ -122,14 +224,14 @@ body {
   right: 5px;
 }
 
-.reset-button, .execution-time {
-  font-size: 0.8rem;
-  color: white
+.output p {
+  padding: 0;
+  margin: 0;
 }
 
-.output-extra .spinner {
-  width: 5px;
-  height: 5px;
+.reset-button, .execution-time {
+  font-size: 0.8rem;
+  color: white;
 }
 
 .reset-button {
@@ -142,7 +244,67 @@ body {
   outline: none; 
 }
 
-.reset-button:hover {
+.reset-button:hover, .theme-switcher:hover {
   color: #9b9b9b;
 }
 
+.theme-switcher:hover {
+  background-color: #505050;
+}
+
+.language-switcher:hover {
+  filter: grayscale(80%);
+  background-color: #505050;
+}
+
+.monaco-editor:focus-within {
+  outline: none !important;
+  border: none !important;
+}
+
+.monaco-editor .scroll-decoration {
+  box-shadow: none !important;
+  background: none !important;
+  opacity: 0 !important;
+}
+
+.editor.vs-light {
+  background-color: #fff
+}
+
+.output.vs-light {
+  color: black;
+  background-color: #fff;
+}
+
+.output.vs-light.error {
+  color: red;
+}
+
+.output.vs-light .output-extra .execution-time {
+  color: black;
+}
+
+.output.vs-light .output-extra .reset-button {
+  color: black;
+}
+
+.output.vs-light .spinner {
+  border-top: 4px solid black;
+}
+
+.editor.twilight, .output.twilight {
+  background-color: #141414
+}
+
+.editor.github-dark, .output.github-dark {
+  background-color: #24292e
+}
+
+.editor.briliance-dull, .output.briliance-dull {
+  background-color: #050505FA;
+}
+
+.editor.tomorrow-night, .output.tomorrow-night {
+  background-color: #2D2D2D;
+}
