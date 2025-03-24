@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+
 body {
   background-color: #1d1b1b;
   margin: 0;
@@ -25,15 +26,18 @@ body {
   align-self: center;
   color: white; 
   border: none;
+  position: absolute;
+  left: 50%;
+  z-index: 99999;
   border-radius: 5px;
   padding: 10px 20px;
   font-size: 16px;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .run-code.loading {
   color: #9b9b9b;
-  padding: 10px 35px;
+  padding: 10px 37px;
   font-size: 16px;
   background-color: #3d3d3d;
 }
@@ -206,12 +210,12 @@ body {
 }
 
 .output {
-    display: block;
-    white-space: pre-line;
-    position: relative;
-    color: white;
-    opacity: 0.9;
-    width: 40%;
+  display: block;
+  white-space: pre-line;
+  position: relative;
+  color: white;
+  width: 40%;
+  opacity: 0.9;
 }
 
 .output.error {
@@ -257,6 +261,70 @@ body {
   background-color: #505050;
 }
 
+.info {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 20px;
+  background-color: black;
+}
+
+.info p, .info span {
+  color: white;
+}
+
+.tagline {
+  align-self: center;
+  font-size: 12px;
+}
+
+.github-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 15px;
+  background-color: #181818;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  position: relative;
+}
+
+.github-button i {
+  font-size: 24px;
+}
+
+.github-button:hover {
+  background-color: #444;
+}
+
+.github-button .tooltip {
+  visibility: hidden;
+  background-color: #1e1e1e;
+  color: #fff;
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.github-button:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
 .monaco-editor:focus-within {
   outline: none !important;
   border: none !important;
@@ -266,31 +334,6 @@ body {
   box-shadow: none !important;
   background: none !important;
   opacity: 0 !important;
-}
-
-.editor.vs-light {
-  background-color: #fff
-}
-
-.output.vs-light {
-  color: black;
-  background-color: #fff;
-}
-
-.output.vs-light.error {
-  color: red;
-}
-
-.output.vs-light .output-extra .execution-time {
-  color: black;
-}
-
-.output.vs-light .output-extra .reset-button {
-  color: black;
-}
-
-.output.vs-light .spinner {
-  border-top: 4px solid black;
 }
 
 .editor.twilight, .output.twilight {
@@ -307,4 +350,161 @@ body {
 
 .editor.tomorrow-night, .output.tomorrow-night {
   background-color: #2D2D2D;
+}
+
+/*/ Main Page Light Theme /*/
+
+.editor.vs-light, .editor.active4d, .editor.github-light, .editor.chrome-devtools, .editor.tomorrow {
+  background-color: #fff
+}
+
+.output.vs-light, .output.active4d, .output.github-light, .output.chrome-devtools, .output.tomorrow {
+  color: black;
+  background-color: #fff;
+}
+
+.output.vs-light.error, .output.active4d.error, .output.github-light.error, .output.chrome-devtools.error, .output.tomorrow.error {
+  color: red;
+}
+
+.output.vs-light .output-extra .execution-time {
+  color: black;
+}
+
+.output.vs-light .output-extra .reset-button {
+  color: black;
+}
+
+.output.vs-light .output-extra .reset-button:hover {
+  color: rgb(78, 78, 78);
+}
+
+.output.vs-light .spinner {
+  border-top: 4px solid black;
+}
+
+.output.active4d .output-extra .execution-time {
+  color: black;
+}
+
+.output.active4d .output-extra .reset-button {
+  color: black;
+}
+
+.output.active4d .output-extra .reset-button:hover {
+  color: rgb(78, 78, 78);
+}
+
+.output.active4d .spinner {
+  border-top: 4px solid black;
+}
+
+.output.github-light .output-extra .execution-time {
+  color: black;
+}
+
+.output.github-light .output-extra .reset-button {
+  color: black;
+}
+
+.output.github-light .output-extra .reset-button:hover {
+  color: rgb(78, 78, 78);
+}
+
+.output.github-light .spinner {
+  border-top: 4px solid black;
+}
+
+.output.chrome-devtools .output-extra .execution-time {
+  color: black;
+}
+
+.output.chrome-devtools .output-extra .reset-button {
+  color: black;
+}
+
+.output.chrome-devtools .output-extra .reset-button:hover {
+  color: rgb(78, 78, 78);
+}
+
+.output.chrome-devtools .spinner {
+  border-top: 4px solid black;
+}
+
+.output.tomorrow .output-extra .execution-time {
+  color: black;
+}
+
+.output.tomorrow .output-extra .reset-button {
+  color: black;
+}
+
+.output.tomorrow .output-extra .reset-button:hover {
+  color: rgb(78, 78, 78);
+}
+
+.output.tomorrow .spinner {
+  border-top: 4px solid black;
+}
+
+body.light {
+  background-color: #f0f0f0;
+}
+
+body.light .spinner {
+  border-top: 4px solid black;
+}
+
+.header.light {
+  background-color: white;
+}
+
+.header.light .title {
+  color: black;
+}
+
+.header.light .run-code {
+  background-color: rgb(0, 156, 0);
+  color: black;
+}
+
+.header.light .run-code.loading {
+  background: #656565;
+  color: #ababab;
+}
+
+.header.light .editor-config .editor-switcher-button {
+  background: rgb(233, 233, 233);
+}
+
+.header.light .editor-config .editor-switcher-button .theme-title {
+  color: black;
+}
+
+.header.light .editor-config .editor-switcher-button .editor-switcher i {
+  color: black;
+}
+
+.header.light .editor-config .editor-switcher-button .editor-switcher i:hover {
+  color: rgb(78, 78, 78);
+}
+
+.header.light .editor-config .theme-switcher {
+  background: rgb(233, 233, 233);
+}
+
+.header.light .editor-config .theme-switcher i {
+  color: black;
+}
+
+.header.light .editor-config .theme-switcher:hover {
+  background: rgb(171, 171, 171);
+}
+
+.header.light .editor-config .language-switcher {
+  background: rgb(233, 233, 233);
+}
+
+.header.light .editor-config .language-switcher:hover {
+  background: rgb(171, 171, 171);
 }

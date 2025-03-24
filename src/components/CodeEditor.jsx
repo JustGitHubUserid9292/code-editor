@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Editor, useMonaco } from '@monaco-editor/react';
-import { github_dark, twilight, briliance_dull, tomorrow_night_eighties } from '../assets/constants';
+import { github_dark, twilight, briliance_dull, tomorrow_night_eighties, active4d, github_light, chrome_devtools, tomorrow } from '../assets/constants';
 
 const CodeEditor = ({ code, setCode, language, editorTheme }) => {
   const monaco = useMonaco()
@@ -18,12 +18,25 @@ const CodeEditor = ({ code, setCode, language, editorTheme }) => {
 
   useEffect(() => {
     if (monaco) {
-      monaco.editor.defineTheme("github-dark", github_dark);
-      monaco.editor.defineTheme("twilight", twilight);
-      monaco.editor.defineTheme("briliance-dull", briliance_dull);
-      monaco.editor.defineTheme("tomorrow-night", tomorrow_night_eighties);
+      const themes = {
+        "github-dark": github_dark,
+        "github-light": github_light,
+        twilight,
+        "briliance-dull": briliance_dull,
+        "tomorrow-night": tomorrow_night_eighties,
+        tomorrow,
+        active4d,
+        "chrome-devtools": chrome_devtools
+      };
+  
+      Object.entries(themes).forEach(([name, data]) => {
+        monaco.editor.defineTheme(name, data);
+      });
+
+      monaco.editor.setTheme(editorTheme);
     }
-  }, [monaco]);
+  }, [monaco, editorTheme]);
+  
 
   return (<>
   <div className={`editor ${editorTheme}`}>

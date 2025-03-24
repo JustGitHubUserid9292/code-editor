@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { editorThemes } from "../assets/constants";
+import { editorThemesDark, editorThemesLight } from "../assets/constants";
 
-const EditorThemeSwitcher = ({ editorTheme, setEditorTheme }) => {
+const EditorThemeSwitcher = ({ editorTheme, setEditorTheme, isLight }) => {
     const [isShow, setShow] = useState(false)
 
     const toggleMenu = () => {
@@ -25,7 +25,9 @@ const EditorThemeSwitcher = ({ editorTheme, setEditorTheme }) => {
         <div className='editor-switcher-menu'>
             <div className="editor-switcher-button"><span className="theme-title">{editorTheme}</span><button className='editor-switcher' onClick={toggleMenu}><i className="ri-arrow-down-s-line"></i></button></div>
                <div className={isShow ? "editor-menu show" : "editor-menu"}>   
-                    {editorThemes.map(theme => {
+                    {isLight ? editorThemesLight.map(theme => {
+                        return <a key={theme} className="menu-item" onClick={() => { setEditorTheme(theme); setShow(false); }}>{theme}</a>
+                    }) : editorThemesDark.map(theme => {
                         return <a key={theme} className="menu-item" onClick={() => { setEditorTheme(theme); setShow(false); }}>{theme}</a>
                     })}
                </div>
