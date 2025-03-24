@@ -21,3 +21,7 @@ CodeEditor is an online code editor that supports multiple programming languages
   <img src="src/assets/cshLogo.png" alt="logo" width="25"/> C#  
 
 - Saving code and themes in the browser using LocalStorage
+
+## Deploy
+
+- https://devcodeeditor.netlify.app/
