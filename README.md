@@ -12,7 +12,7 @@ CodeEditor is an online code editor that supports multiple programming languages
 
 ## Features
 
-- Write code in the following languages: 
+- Write code in the following languages:  
   <img src="src/assets/jsLogo.png" alt="logo" width="25"/> JavaScript   
   <img src="src/assets/tsLogo.png" alt="logo" width="25"/> TypeScript  
   <img src="src/assets/phpLogo.png" alt="logo" width="25"/> PHP  
