@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3d6dd9d2-6f85-4737-9718-b24d401a20b7/deploy-status)](https://app.netlify.com/sites/devcodeeditor/deploys)
+
 # <img src="public/code-editor-logo.png" alt="logo" width="25"/> CodeEditor.
 
 CodeEditor is an online code editor that supports multiple programming languages, including JavaScript, TypeScript, PHP, Java, Python, and C#. The editor allows users to write code, save it, and switch themes (for both the editor and the main page).
