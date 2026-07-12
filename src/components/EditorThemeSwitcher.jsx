@@ -24,7 +24,7 @@ const EditorThemeSwitcher = ({ editorTheme, setEditorTheme, isLight }) => {
     return (<>
         <div className='editor-switcher-menu'>
             <div className="editor-switcher-button"><span className="theme-title">{editorTheme}</span><button className='editor-switcher' onClick={toggleMenu}><i className="ri-arrow-down-s-line"></i></button></div>
-               <div className={isShow ? "editor-menu show" : "editor-menu"}>   
+               <div className={isShow ? `editor-menu ${isLight ? "light" : ""} show` : "editor-menu"}>   
                     {isLight ? editorThemesLight.map(theme => {
                         return <a key={theme} className="menu-item" onClick={() => { setEditorTheme(theme); setShow(false); }}>{theme}</a>
                     }) : editorThemesDark.map(theme => {

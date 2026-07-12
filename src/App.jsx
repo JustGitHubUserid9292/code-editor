@@ -70,7 +70,7 @@ function App() {
         <button className={isLoading ? 'run-code loading' : 'run-code'} onClick={runCode}><i className={isLoading ? "ri-stop-fill": "ri-play-fill"}></i>{isLoading ? '' : ' Run'}</button>
         <div className="editor-config">
           <EditorThemeSwitcher editorTheme={editorTheme} setEditorTheme={setEditorTheme} isLight={isLight} />
-          <LanguageSwitcher language={language} setLanguage={setLanguage} />
+          <LanguageSwitcher language={language} setLanguage={setLanguage} isLight={isLight} />
           <button className='theme-switcher' onClick={setLight}>{isLight ? <i className="ri-sun-line"></i> : <i className="ri-moon-line"></i>}</button>
         </div>
     </div>

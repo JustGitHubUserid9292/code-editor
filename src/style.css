@@ -422,7 +422,7 @@ body.light .spinner {
   color: #121212;
 }
 
-.header.light .language-menu.show, .editor-menu.show {
+.language-menu.light.show, .editor-menu.light.show {
   background-color: #f0f0f0;
 }
 

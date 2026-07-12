@@ -5,7 +5,7 @@ const getLogo = (logoName) => {
     return new URL(`../assets/${logoName}.png`, import.meta.url).href;
 };
 
-const LanguageSwitcher = ({ language, setLanguage }) => {
+const LanguageSwitcher = ({ language, setLanguage, isLight }) => {
     const lngs = Object.entries(languageVersions)
     const [isShow, setShow] = useState(false)
 
@@ -28,7 +28,7 @@ const LanguageSwitcher = ({ language, setLanguage }) => {
     return (<>
         <div className='language-switcher-menu'>
             <button className='language-switcher' onClick={toggleMenu}><img className='lngLogo' src={getLogo(languageLogo[language])} alt="lngLogo"></img></button>
-              <div className={isShow ? "language-menu show" : "language-menu"}>   
+              <div className={isShow ? `language-menu ${isLight ? "light" : ""} show` : "language-menu"}>   
                 {lngs.map(([lang, info]) => {
                     return <a key={lang} className="menu-item" onClick={() => { setLanguage(lang); setShow(false); }}>{lang}<span className="version">{info.version}</span></a>
                 })}
