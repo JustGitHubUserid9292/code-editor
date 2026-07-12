@@ -33,7 +33,7 @@ function App() {
   }, [editorTheme])
 
   const runCode = async () => {
-    const timeoutMs = 3200;
+    const timeoutMs = 54000;
     if (!code || isLoading) return;
     try {
       setOutputTime(performance.now())
@@ -42,8 +42,8 @@ function App() {
         setTimeout(() => reject(new Error("Execution Timeout: Code took too long to run")), timeoutMs)
       );
       const result = await Promise.race([getOutput(code, language), timeoutPromise]);
-      result.run.stderr ? setOutput(result.run.stderr.split("\n")) : setOutput(result.run.output.split("\n"))
-      result.run.stderr ? setIsError(true) : setIsError(false);
+      result.program_error ? setOutput(result.program_error.split("\n")) : setOutput(result.program_output.split("\n"))
+      result.program_error ? setIsError(true) : setIsError(false);
     } catch(e) {
       setOutput(e.message.split('\n'))
       setIsError(true)
@@ -66,7 +66,7 @@ function App() {
   return (
     <>
     <div className={isLight ? 'header light' : 'header'}>
-        <h1 className='title'>CodeEditor.</h1>
+        <h1 className='title'>CodeEditor<span>.</span></h1>
         <button className={isLoading ? 'run-code loading' : 'run-code'} onClick={runCode}><i className={isLoading ? "ri-stop-fill": "ri-play-fill"}></i>{isLoading ? '' : ' Run'}</button>
         <div className="editor-config">
           <EditorThemeSwitcher editorTheme={editorTheme} setEditorTheme={setEditorTheme} isLight={isLight} />
@@ -78,14 +78,6 @@ function App() {
         <CodeEditor code={code} setCode={setCode} language={language} editorTheme={editorTheme} />
         <Output output={output} isLoading={isLoading} isError={isError} outputTime={outputTime} resetOutput={resetOutput} editorTheme={editorTheme}></Output>
     </div>
-    <footer className="info">
-      <p>CodeEditor v<span id="version">1.0.0</span></p>
-      <p className="tagline">Keep coding, keep growing!</p>
-      <a className="github-button" href="https://github.com/JustGitHubUserid9292/code-editor" target="_blank">
-        <i className="ri-github-fill"></i>
-        <span className="tooltip">Source Code</span>
-      </a>
-    </footer>
     </>
   )
 }

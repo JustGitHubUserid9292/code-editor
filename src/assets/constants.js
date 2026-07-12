@@ -8,12 +8,12 @@ export const languageLogo = {
 };
 
 export const languageVersions = {
-    javascript: "18.15.0",
-    typescript: "5.0.3",
-    python: "3.10.0",
-    java: "15.0.2",
-    csharp: "6.12.0",
-    php: "8.2.3",
+    javascript: { name: "nodejs", version: "20.17.0" },
+    typescript: { name: "typescript", version: "5.6.2"},
+    python: { name: "cpython", version: "3.9.20"},
+    java: { name: "openjdk-jdk", version: "21+35"},
+    csharp: { name: "mono", version: "6.12.0.199"},
+    php: { name: "php", version: "8.2.24"},
 };
 
 export const editorThemesDark = ['vs-dark', 'github-dark', 'twilight', 'briliance-dull', 'tomorrow-night']

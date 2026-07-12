@@ -2,18 +2,14 @@ import axios from "axios";
 import { languageVersions } from "../assets/constants";
 
 const API = axios.create({
-    baseURL: "https://emkc.org/api/v2/piston"
+    baseURL: "https://wandbox.org",
 });
 
 export default async function getOutput(sourceCode, language) {
-    const response = await API.post('/execute', {
-        language: language,
-        version: languageVersions[language],
-        files: [
-        {
-          content: sourceCode,
-        },
-    ],
-    })
+    const response = await API.post("/api/compile.json",{
+        compiler: `${languageVersions[language].name}-${languageVersions[language].version}`,
+        code: sourceCode
+    });
+    
     return response.data;
 }

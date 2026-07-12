@@ -29,8 +29,8 @@ const LanguageSwitcher = ({ language, setLanguage }) => {
         <div className='language-switcher-menu'>
             <button className='language-switcher' onClick={toggleMenu}><img className='lngLogo' src={getLogo(languageLogo[language])} alt="lngLogo"></img></button>
               <div className={isShow ? "language-menu show" : "language-menu"}>   
-                {lngs.map(([lang, ver]) => {
-                    return <a key={lang} className="menu-item" onClick={() => { setLanguage(lang); setShow(false); }}>{lang}<span className="version">{ver}</span></a>
+                {lngs.map(([lang, info]) => {
+                    return <a key={lang} className="menu-item" onClick={() => { setLanguage(lang); setShow(false); }}>{lang}<span className="version">{info.version}</span></a>
                 })}
               </div>
           </div>

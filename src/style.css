@@ -2,7 +2,7 @@
 
 
 body {
-  background-color: #1d1b1b;
+  background-color: #0a0a0a;
   margin: 0;
   height: 100vh;
   font-family: 'Inter', 'sans-serif';
@@ -14,40 +14,46 @@ body {
   justify-content: space-between;
   padding: 14px 20px;
   margin-top: 30px;
-  background-color: #1e1e1e;
+  background-color: #121212;
+  border-bottom: rgba(255,255,255,0.06)
 }
 
 .title {
   color: white;
 }
 
+.title span {
+  color: #22C55E;
+}
+
 .run-code {
-  background-color: green;
+  background-color: #22C55E;
   align-self: center;
   color: white; 
   border: none;
   position: absolute;
   left: 50%;
   z-index: 99999;
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
 }
 
 .run-code.loading {
-  color: #9b9b9b;
+  color: #fff;
   padding: 10px 37px;
   font-size: 16px;
   background-color: #3d3d3d;
 }
 
 .run-code:hover {
-  background-color: #0a7a0a;
+  box-shadow: 0 0 20px rgba(34,197,94,.25);
 }
 
 .run-code.loading:hover {
   background-color: #505050;
+  box-shadow: none;
 }
 
 .editor-config {
@@ -61,7 +67,7 @@ body {
 
 .language-switcher, .theme-switcher {
   font-size: 16px;
-  background-color: #3d3d3d;
+  background-color: #0a0a0a;
   width: 50px;
   color: white;
   padding: 10px 5px;
@@ -92,7 +98,7 @@ body {
 }
 
 .editor-switcher-button {
-  background: #333;
+  background: #0a0a0a;
   padding: 10px 20px;
   border-radius: 8px;
   display: inline-flex;
@@ -128,7 +134,7 @@ body {
   right: 50px; 
   flex-direction: column;
   gap: 10px;
-  background: #fff;
+  background: #121212;
   border-radius: 8px;
   padding: 10px;
   z-index: 9999;
@@ -143,7 +149,7 @@ body {
 .menu-item {
   padding: 10px;
   cursor: pointer;
-  color: #333;
+  color: #fff;
   text-decoration: none;
   font-weight: bold;
   transition: background 0.3s ease, transform 0.2s ease;
@@ -157,13 +163,12 @@ body {
 }
 
 .menu-item:hover {
-  background: #9b9b9b;
-  color: #fff;
+  background: #22C55E;
   transform: translateX(5px);
 }
 
 .menu-item:hover .version {
-  color: #333;
+  color: #fff;
 }
 
 .spinner {
@@ -179,7 +184,7 @@ body {
   display: none;
 }
 
-/* Анимация вращения */
+/* spin */
 @keyframes spin {
   0% {
       transform: rotate(0deg);
@@ -203,8 +208,8 @@ body {
   display: flex;
   width: 50%; 
   height: 60vh; 
-  background-color: #1e1e1e; 
-  border-radius: 15px; 
+  background-color: #1e1e1e;
+  border-radius: 14px; 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
 }
@@ -233,9 +238,18 @@ body {
   margin: 0;
 }
 
-.reset-button, .execution-time {
+.reset-button, .execution-time, .code-status {
   font-size: 0.8rem;
   color: white;
+}
+
+.code-status {
+  color: #22C55E;
+  padding-right: 5px;
+}
+
+.code-status.error {
+  color: red;
 }
 
 .reset-button {
@@ -257,72 +271,8 @@ body {
 }
 
 .language-switcher:hover {
-  filter: grayscale(80%);
+  filter: grayscale(10%);
   background-color: #505050;
-}
-
-.info {
-  display: flex;
-  justify-content: space-between;
-  padding: 30px 20px;
-  background-color: black;
-}
-
-.info p, .info span {
-  color: white;
-}
-
-.tagline {
-  align-self: center;
-  font-size: 12px;
-}
-
-.github-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 8px 15px;
-  background-color: #181818;
-  color: #fff;
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  font-weight: 500;
-  text-decoration: none;
-  transition: background 0.3s ease;
-  position: relative;
-}
-
-.github-button i {
-  font-size: 24px;
-}
-
-.github-button:hover {
-  background-color: #444;
-}
-
-.github-button .tooltip {
-  visibility: hidden;
-  background-color: #1e1e1e;
-  color: #fff;
-  text-align: center;
-  padding: 4px 8px;
-  border-radius: 5px;
-  position: absolute;
-  bottom: 120%;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  font-size: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-.github-button:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
 }
 
 .monaco-editor:focus-within {
@@ -464,17 +414,24 @@ body.light .spinner {
 }
 
 .header.light .run-code {
-  background-color: rgb(0, 156, 0);
   color: black;
 }
 
 .header.light .run-code.loading {
-  background: #656565;
-  color: #ababab;
+  background: #f0f0f0;
+  color: #121212;
+}
+
+.header.light .language-menu.show, .editor-menu.show {
+  background-color: #f0f0f0;
+}
+
+.header.light .menu-item {
+  color: #121212;
 }
 
 .header.light .editor-config .editor-switcher-button {
-  background: rgb(233, 233, 233);
+  background: #f0f0f0;
 }
 
 .header.light .editor-config .editor-switcher-button .theme-title {
@@ -490,7 +447,7 @@ body.light .spinner {
 }
 
 .header.light .editor-config .theme-switcher {
-  background: rgb(233, 233, 233);
+  background: #f0f0f0;
 }
 
 .header.light .editor-config .theme-switcher i {
